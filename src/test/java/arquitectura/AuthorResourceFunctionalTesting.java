@@ -19,7 +19,7 @@ public class AuthorResourceFunctionalTesting {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }*/
 
-    public static final String AUTHOR = "author";
+    private static final String AUTHOR = Dispacher.AUTHOR;
     
     private void createTheme() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).body("Pablo Jimenez").build();
@@ -31,13 +31,13 @@ public class AuthorResourceFunctionalTesting {
         this.createTheme();
     }
 
-    @Test //TODO: Pediente de implementar las excepciones 
+    @Test (expected = HttpException.class)
     public void testCreateAuthorNameEmpty() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).body("").build();
         new HttpClientService().httpRequest(request);
     }
 
-  @Test ////TODO: Pediente de implementar las excepciones 
+  @Test (expected = HttpException.class)
     public void testCreateWithoutAuthorName() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).build();
         new HttpClientService().httpRequest(request);

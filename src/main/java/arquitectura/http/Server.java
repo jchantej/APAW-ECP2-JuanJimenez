@@ -1,9 +1,9 @@
 package arquitectura.http;
 
-import arquitectura.api.Dispatcher;
+import arquitectura.Dispacher;
 
 public class Server {
-    private Dispatcher dispatcher = new Dispatcher();
+    private Dispacher dispatcher = new Dispacher();
 
     public HttpResponse submit(HttpRequest request) {
         HttpResponse response = new HttpResponse();

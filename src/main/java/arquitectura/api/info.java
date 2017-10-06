@@ -3,7 +3,7 @@ package arquitectura.api;
 import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpResponse;
 
-public class Dispatcher {
+public class info {
 
     public void doPost(HttpRequest request, HttpResponse response) {
         // TODO Auto-generated method stub
