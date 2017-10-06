@@ -1,5 +1,7 @@
 package arquitectura;
 
+import arquitectura.api.resources.AuthorResource;
+import arquitectura.api.resources.exceptions.RequestInvalidException;
 import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpResponse;
 import arquitectura.http.HttpStatus;
@@ -7,7 +9,8 @@ import arquitectura.http.HttpStatus;
 
 public class Dispacher {
     
-    public static final String AUTHOR = "author";
+    private AuthorResource authorResource = new AuthorResource();
+   
     
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
@@ -17,11 +20,12 @@ public class Dispacher {
     
     public void doPost(HttpRequest request, HttpResponse response) {
         try {
-            if (request.isEqualsPath(AUTHOR)) {
-            //Todo : pasar la informacion del recurso para crear el author
+            if (request.isEqualsPath(AuthorResource.AUTHOR)) {
+                authorResource.createAuthor(request.getBody());
+                response.setStatus(HttpStatus.CREATED);
             
             } else {
-               // throw new RequestInvalidException(request.getPath());
+                throw new RequestInvalidException(request.getPath());
             }
         } catch (Exception e) {
             responseError(response, e);

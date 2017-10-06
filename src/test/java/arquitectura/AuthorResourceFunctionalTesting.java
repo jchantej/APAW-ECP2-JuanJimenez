@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import arquitectura.api.resources.AuthorResource;
 import arquitectura.http.HttpClientService;
 import arquitectura.http.HttpException;
 import arquitectura.http.HttpMethod;
@@ -19,10 +20,10 @@ public class AuthorResourceFunctionalTesting {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }*/
 
-    private static final String AUTHOR = Dispacher.AUTHOR;
+
     
     private void createTheme() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).body("Pablo Jimenez").build();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AuthorResource.AUTHOR).body("Pablo Jimenez").build();
         new HttpClientService().httpRequest(request);
     }
 
@@ -33,13 +34,13 @@ public class AuthorResourceFunctionalTesting {
 
     @Test (expected = HttpException.class)
     public void testCreateAuthorNameEmpty() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).body("").build();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AuthorResource.AUTHOR).body("").build();
         new HttpClientService().httpRequest(request);
     }
 
   @Test (expected = HttpException.class)
     public void testCreateWithoutAuthorName() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AUTHOR).build();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AuthorResource.AUTHOR).build();
         new HttpClientService().httpRequest(request);
     }
 
