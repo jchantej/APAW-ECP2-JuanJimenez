@@ -13,9 +13,9 @@ public class AuthorDtoTest {
     public void testAuthorIntString() {
         Author author = new Author("Pablo Jimenez");
         AuthorDto authorDto = new AuthorDto(author);
-        authorDto.setLanguage("Español");
-        assertEquals("Pablo Jimenez", authorDto.getName());
-        assertEquals("Español", authorDto.getLanguage());
+        authorDto.setAuthorLanguage("Español");
+        assertEquals("Pablo Jimenez", authorDto.getAuthorName());
+        assertEquals("Español", authorDto.getAuthorLanguage());
         
     }
     

@@ -3,49 +3,49 @@ package arquitectura.api.dtos;
 import arquitectura.api.entities.Author;
 
 public class AuthorDto {
-    
-    private long id;
-    private String name;
-    private String language;
+
+    private long authorId;
+
+    private String authorName;
+
+    private String authorLanguage;
 
     public AuthorDto() {
     }
 
     public AuthorDto(Author author) {
-        name = author.getName();
-        language = author.getLanguage();
+        authorName = author.getName();
+        authorLanguage = author.getLanguage();
     }
 
-    public long getId() {
-        return id;
+    public long getAuthorId() {
+        return authorId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAuthorId(long authorId) {
+        this.authorId = authorId;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    
-
-    public String getLanguage() {
-        return language;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public String getAuthorLanguage() {
+        return authorLanguage;
+    }
+
+    public void setAuthorLanguage(String authorLanguage) {
+        this.authorLanguage = authorLanguage;
     }
 
     @Override
     public String toString() {
-   
-        return "{\"id\":" + id + ",\"name\":\"" + name + ",\"language\":\"" + language + "\"}";
+
+        return "{\"id\":" + authorId + ",\"name\":\"" + authorName + ",\"language\":\"" + authorLanguage + "\"}";
     }
 
 }
