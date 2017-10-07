@@ -9,9 +9,8 @@ public class Author {
     private String language;
 
     
-    public Author(long id, String name) {
+    public Author(String name) {
         super();
-        this.id = id;
         this.name = name;
     }
 

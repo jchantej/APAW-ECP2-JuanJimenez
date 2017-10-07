@@ -11,7 +11,7 @@ public class AuthorDtoTest {
     
     @Test
     public void testAuthorIntString() {
-        Author author = new Author(1, "Pablo Jimenez");
+        Author author = new Author("Pablo Jimenez");
         AuthorDto authorDto = new AuthorDto(author);
         authorDto.setLanguage("Español");
         assertEquals(1, authorDto.getId());
@@ -22,7 +22,7 @@ public class AuthorDtoTest {
     
     @Test
     public void testNotNullAuthor() {
-        assertNotNull(new AuthorDto(new Author(1, "Juan Jimenez")));
+        assertNotNull(new AuthorDto(new Author("Juan Jimenez")));
     }
 
 

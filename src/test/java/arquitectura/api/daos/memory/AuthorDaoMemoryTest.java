@@ -17,7 +17,7 @@ public class AuthorDaoMemoryTest {
     @Before
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
-        author = new Author(1,"Pablo Jimenez");
+        author = new Author("Pablo Jimenez");
         DaoFactory.getFactory().getAuthorDao().create(author);
     }
     

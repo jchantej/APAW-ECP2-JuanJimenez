@@ -14,9 +14,9 @@ public class Book {
 
     private Author autor;
 
-    public Book(long id, Author autor) {
+    public Book(long isbn, Author autor) {
         assert autor != null;
-        this.id = id;
+        this.isbn = isbn;
         this.autor = autor;
         this.date = Calendar.getInstance();
     }

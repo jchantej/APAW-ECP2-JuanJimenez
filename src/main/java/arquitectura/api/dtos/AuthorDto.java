@@ -12,7 +12,6 @@ public class AuthorDto {
     }
 
     public AuthorDto(Author author) {
-        id = author.getId();
         name = author.getName();
         language = author.getLanguage();
     }

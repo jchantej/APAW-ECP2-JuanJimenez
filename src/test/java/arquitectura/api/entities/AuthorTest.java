@@ -10,15 +10,14 @@ public class AuthorTest {
     
     @Test
     public void testAuthorIntString() {
-        Author author = new Author(1, "Pablo Jimenez");
-        assertEquals(1, author.getId());
+        Author author = new Author("Pablo Jimenez");
         assertEquals("Pablo Jimenez", author.getName());
         
     }
     
     @Test
     public void testNotNullAuthor() {
-        assertNotNull(new Author(1, "Pablo Jimenez"));
+        assertNotNull(new Author("Pablo Jimenez"));
     }
 
 }

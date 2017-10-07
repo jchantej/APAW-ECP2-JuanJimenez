@@ -7,14 +7,13 @@ import org.junit.Test;
 
 public class BookTest {
     
-    Author author = new Author(1, "Pablo Jimenez");
-    Book book =  new Book(1, author);
+    Author author = new Author("Pablo Jimenez");
+    Book book =  new Book(123, author);
     
     @Test
     public void testBookIntString() {
-
-        assertEquals(1, author.getId());
         assertEquals("Pablo Jimenez", book.getAutor().getName());
+        assertEquals(123, book.getIsbn());
         
     }
     

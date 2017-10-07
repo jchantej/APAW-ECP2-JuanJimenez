@@ -1,8 +1,6 @@
 package arquitectura.api.resources;
 
-import java.util.List;
-import java.util.Optional;
-
+import arquitectura.api.controllers.AuthorController;
 import arquitectura.api.resources.exceptions.AuthorFieldInvalidException;
 
 
@@ -13,7 +11,7 @@ public class AuthorResource {
 
     public void createAuthor(String authorName) throws AuthorFieldInvalidException {
         this.validateField(authorName);
-        // TODO: llamar al controlador para que cree el tema
+        new AuthorController().createAuthor(authorName);
     }
 
     private void validateField(String field) throws AuthorFieldInvalidException {
