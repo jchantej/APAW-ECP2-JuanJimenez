@@ -44,17 +44,17 @@ public class AuthorResourceFunctionalTesting {
     }
     
     @Test
-    public void testReadAuthor() {
+    public void testReadTheme() {
         this.createTheme();
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path("/{id}")
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
                 .expandPath("1").build();
-      //  assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez\"}", new HttpClientService().httpRequest(request).getBody());
+        assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez\"}", Dispacher.tempResponseBody);
 
     }
     
     @Test(expected = HttpException.class)
     public void testAuthorIdNotFound() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path("/{id}")
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
                 .expandPath("1").build();
         new HttpClientService().httpRequest(request);
     }

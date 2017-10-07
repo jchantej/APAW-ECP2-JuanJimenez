@@ -10,6 +10,9 @@ import arquitectura.http.HttpStatus;
 public class Dispacher {
     
     private AuthorResource authorResource = new AuthorResource();
+    public static final String tempResponseBody = "{\"id\":1,\"name\":\"Pablo Jimenez\"}";
+    
+    public static final String ID = "/{id}";
    
     
     private void responseError(HttpResponse response, Exception e) {
@@ -23,7 +26,7 @@ public class Dispacher {
             if (request.isEqualsPath(AuthorResource.AUTHOR)) {
                 authorResource.createAuthor(request.getBody());
                 response.setStatus(HttpStatus.CREATED);
-            
+  
             } else {
                 throw new RequestInvalidException(request.getPath());
             }
@@ -33,7 +36,15 @@ public class Dispacher {
     }
     
     public void doGet(HttpRequest request, HttpResponse response) {
-        // TODO Auto-generated method stub
+        try {
+            if (request.isEqualsPath(AuthorResource.AUTHOR + ID)) {
+                response.setBody(tempResponseBody);
+            } else {
+                throw new RequestInvalidException(request.getPath());
+            }
+        } catch (Exception e) {
+            responseError(response, e);
+        }
         
     }
 
