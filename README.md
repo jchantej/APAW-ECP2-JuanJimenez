@@ -8,11 +8,7 @@
 * Eclipse
 * GitHub
 
-<<<<<<< HEAD
-### Descripción
-=======
 ### Descripción 
->>>>>>> refs/heads/master
 En proyecto tiene como finalidad montar una arquitectura Web- MVC - API  
   
 1.- API Rest   

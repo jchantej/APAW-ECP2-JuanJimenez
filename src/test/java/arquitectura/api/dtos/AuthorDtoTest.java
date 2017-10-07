@@ -14,7 +14,6 @@ public class AuthorDtoTest {
         Author author = new Author("Pablo Jimenez");
         AuthorDto authorDto = new AuthorDto(author);
         authorDto.setLanguage("Español");
-        assertEquals(1, authorDto.getId());
         assertEquals("Pablo Jimenez", authorDto.getName());
         assertEquals("Español", authorDto.getLanguage());
         
