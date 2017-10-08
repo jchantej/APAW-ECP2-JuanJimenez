@@ -7,15 +7,19 @@ import org.junit.Test;
 import arquitectura.api.daos.DaoFactory;
 import arquitectura.api.daos.memory.DaoMemoryFactory;
 import arquitectura.api.resources.AuthorResource;
+import arquitectura.api.resources.BookResource;
 import arquitectura.http.HttpClientService;
 import arquitectura.http.HttpException;
 import arquitectura.http.HttpMethod;
 import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpRequestBuilder;
 
+
 public class AuthorResourceFunctionalTesting {
 
     private String jsonEsperado = "[{\"id\":1,\"name\":\"Pablo Jimenez,\"language\":\"Español\"}, {\"id\":2,\"name\":\"Juan Jimenez,\"language\":\"Español\"}]";
+    
+    private String jsonAurhorBooksIsbns = "{{\"id\":1,\"name\":\"Pablo Jimenez\"},[123, 124]}";
 
     @Before
     public void before() {
@@ -80,7 +84,22 @@ public class AuthorResourceFunctionalTesting {
 
         assertEquals(jsonEsperado, new HttpClientService().httpRequest(request).getBody());
      
-
     }
+    
+    @Test
+    public void testAuthorBooksIsbns() {
+        this.createAuthor();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(BookResource.BOOK).body("1:123:Java").build();
+        new HttpClientService().httpRequest(request);
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(BookResource.BOOK).body("1:124:Python").build();
+        new HttpClientService().httpRequest(request);
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID+"/isbns").expandPath("1")
+                .build();
+        assertEquals(jsonAurhorBooksIsbns, jsonAurhorBooksIsbns);
+        
+  
+    }
+    
+    
 
 }
