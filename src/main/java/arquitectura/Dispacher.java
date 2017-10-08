@@ -10,14 +10,10 @@ import arquitectura.http.HttpStatus;
 public class Dispacher {
     
     private AuthorResource authorResource = new AuthorResource();
-
-   
-    
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
         response.setStatus(HttpStatus.BAD_REQUEST);
     }
-    
     
     public void doPost(HttpRequest request, HttpResponse response) {
         try {
@@ -37,7 +33,7 @@ public class Dispacher {
         try {
             if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID)) {
                 int authorId= Integer.parseInt(request.paths()[1]);
-                authorResource.readTheme(authorId);
+                response.setBody(authorResource.readTheme(authorId).toString());
             } else {
                 throw new RequestInvalidException(request.getPath());
             }

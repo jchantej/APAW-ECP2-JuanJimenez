@@ -3,7 +3,7 @@ package arquitectura.api.dtos;
 import arquitectura.api.entities.Author;
 
 public class AuthorDto {
-
+    
     private long authorId;
 
     private String authorName;
@@ -14,8 +14,9 @@ public class AuthorDto {
     }
 
     public AuthorDto(Author author) {
+        authorId = author.getId();
         authorName = author.getName();
-        authorLanguage = author.getLanguage();
+        authorLanguage ="Español";
     }
 
     public long getAuthorId() {

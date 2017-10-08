@@ -21,14 +21,14 @@ public class AuthorResourceFunctionalTesting {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }
 
-    private void createTheme() {
+    private void createAuthor() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(AuthorResource.AUTHOR).body("Pablo Jimenez").build();
         new HttpClientService().httpRequest(request);
     }
 
     @Test
-    public void testCreateTheme() {
-        this.createTheme();
+    public void testCreateAuthor() {
+        this.createAuthor();
     }
 
     @Test(expected = HttpException.class)
@@ -44,11 +44,12 @@ public class AuthorResourceFunctionalTesting {
     }
     
     @Test
-    public void testReadTheme() {
-        this.createTheme();
+    public void testReadAuthor() {
+        this.createAuthor();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID)
                 .expandPath("1").build();
-        assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez\"}", "{\"id\":1,\"name\":\"Pablo Jimenez\"}");
+        System.out.println(request.getPath());
+        assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez,\"language\":\"Español\"}", new HttpClientService().httpRequest(request).getBody());
 
     }
     
