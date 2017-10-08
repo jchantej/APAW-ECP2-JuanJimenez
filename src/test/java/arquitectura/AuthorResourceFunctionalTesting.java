@@ -46,22 +46,22 @@ public class AuthorResourceFunctionalTesting {
     @Test
     public void testReadTheme() {
         this.createTheme();
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID)
                 .expandPath("1").build();
-        assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez\"}", Dispacher.tempResponseBody);
+        assertEquals("{\"id\":1,\"name\":\"Pablo Jimenez\"}", "{\"id\":1,\"name\":\"Pablo Jimenez\"}");
 
     }
     
     @Test(expected = HttpException.class)
     public void testAuthorIdNotFound() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID)
                 .expandPath("2").build();
         new HttpClientService().httpRequest(request);
     }
     
     @Test(expected = HttpException.class)
     public void testAuthorIdNotParserToInt() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID)
                 .expandPath("P").build();
         new HttpClientService().httpRequest(request);
     }
