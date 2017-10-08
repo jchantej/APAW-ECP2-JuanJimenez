@@ -31,10 +31,7 @@ public class AuthorResource {
     }
 
     public List<AuthorDto> authorList() {
-        
-        //TODO: pendiente de delegar controlador
-
-      return null;
+        return new AuthorController().authorList();
     }
 
 }

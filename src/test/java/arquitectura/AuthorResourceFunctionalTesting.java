@@ -75,10 +75,8 @@ public class AuthorResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(AuthorResource.AUTHOR).body("Juan Jimenez").build();
         new HttpClientService().httpRequest(request);
-
         request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).build();
-
-        assertEquals(jsonEsperado, jsonEsperado);
+        assertEquals(jsonEsperado, new HttpClientService().httpRequest(request).getBody());
      
 
     }
