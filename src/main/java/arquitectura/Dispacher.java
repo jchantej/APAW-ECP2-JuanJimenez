@@ -1,15 +1,21 @@
 package arquitectura;
 
 import arquitectura.api.resources.AuthorResource;
+import arquitectura.api.resources.BookResource;
 import arquitectura.api.resources.exceptions.RequestInvalidException;
 import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpResponse;
 import arquitectura.http.HttpStatus;
 
 
+
 public class Dispacher {
     
+    
     private AuthorResource authorResource = new AuthorResource();
+    private BookResource bookResource = new BookResource();
+
+    
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
         response.setStatus(HttpStatus.BAD_REQUEST);
@@ -19,6 +25,13 @@ public class Dispacher {
         try {
             if (request.isEqualsPath(AuthorResource.AUTHOR)) {
                 authorResource.createAuthor(request.getBody());
+                response.setStatus(HttpStatus.CREATED);
+            } else if (request.isEqualsPath(BookResource.BOOK)) {
+                
+                int authorId = Integer.parseInt(request.getBody().split(":")[0]); 
+                int  isbnBook = Integer.parseInt(request.getBody().split(":")[1]);
+                String titleBook = request.getBody().split(":")[2];
+                bookResource.createBook(authorId, isbnBook, titleBook);
                 response.setStatus(HttpStatus.CREATED);
   
             } else {

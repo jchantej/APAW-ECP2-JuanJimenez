@@ -14,9 +14,10 @@ public class Book {
 
     private Author autor;
 
-    public Book(long isbn, Author autor) {
+    public Book(long isbn, String title, Author autor) {
         assert autor != null;
         this.isbn = isbn;
+        this.title = title;
         this.autor = autor;
         this.date = Calendar.getInstance();
     }

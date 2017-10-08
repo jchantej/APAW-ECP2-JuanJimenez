@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    AuthorControllerIT.class
+    AuthorControllerIT.class,
+    BookControllerIT.class
 
 })
 public class AllApiControllersTests {

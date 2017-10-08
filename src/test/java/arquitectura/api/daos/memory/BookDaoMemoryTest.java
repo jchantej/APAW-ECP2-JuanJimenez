@@ -20,7 +20,7 @@ public class BookDaoMemoryTest {
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
         author = new Author("Pablo Jimenez");
-        book = new Book(3, author);
+        book = new Book(3,"Programacion", author);
         book.setIsbn(3);
         DaoFactory.getFactory().getBookDao().create(book);
 
