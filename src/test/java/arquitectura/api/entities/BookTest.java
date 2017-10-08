@@ -8,7 +8,7 @@ import org.junit.Test;
 public class BookTest {
     
     Author author = new Author("Pablo Jimenez");
-    Book book =  new Book(123, author);
+    Book book =  new Book(123,"Progrmacion" ,author);
     
     @Test
     public void testBookIntString() {

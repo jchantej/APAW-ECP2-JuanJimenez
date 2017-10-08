@@ -1,9 +1,6 @@
 package arquitectura.api.resources;
 
-import java.util.List;
-
-import arquitectura.api.controllers.AuthorController;
-import arquitectura.api.resources.exceptions.AuthorFieldInvalidException;
+import arquitectura.api.controllers.BookController;
 import arquitectura.api.resources.exceptions.AuthorIdNotFoundException;
 import arquitectura.api.resources.exceptions.BookFieldInvalidException;
 import arquitectura.api.resources.exceptions.BookIdNotFoundException;
@@ -11,13 +8,17 @@ import arquitectura.api.resources.exceptions.RequestInvalidException;
 
 public class BookResource {
 
-    public static final String VOTES = "books";
+    public static final String BOOK = "books";
 
-    public void createVote(int authorId, int isbnBook, String titleBook)
+    public void createBook(int authorId, int isbnBook, String titleBook)
             throws RequestInvalidException, AuthorIdNotFoundException, BookIdNotFoundException, BookFieldInvalidException {
 
         this.validateFields(authorId, titleBook);
-        // TODO:Pendiente de Delegar el controlador
+        
+        if (!new BookController().createBook(authorId, isbnBook, titleBook)) {
+            throw new AuthorIdNotFoundException(Integer.toString(authorId));
+        }
+        
     }
 
     private void validateFields(int authorId, String titleBook) throws AuthorIdNotFoundException, BookFieldInvalidException {
