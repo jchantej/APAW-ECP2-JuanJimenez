@@ -26,8 +26,8 @@ public class Dispacher {
                 response.setStatus(HttpStatus.CREATED);
             } else if (request.isEqualsPath(tempPath)) {
                 
-                String bookId = request.getBody().split(":")[0]; // body="themeId:vote"
-                String isbnBook = request.getBody().split(":")[1];
+                String bookId = request.getBody().split(":")[0]; 
+                int  isbnBook = Integer.parseInt(request.getBody().split(":")[1]);
                 String titleBook = request.getBody().split(":")[2];
                 
                 //TODO: Pendiente de delegar al recurso y capturar expeciones

@@ -14,6 +14,7 @@ import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpRequestBuilder;
 
 
+
 public class BookResourceFunctionalTesting {
 
   /*  @Before
@@ -53,11 +54,6 @@ public class BookResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    @Test(expected = HttpException.class)
-    public void testBookAuthorIdNotFound() {
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path("books").body("2:123:Base de datos").build();
-        new HttpClientService().httpRequest(request);
-    }
 
     @Test(expected = HttpException.class)
     public void testBookIsbnNotParserToInt() {
