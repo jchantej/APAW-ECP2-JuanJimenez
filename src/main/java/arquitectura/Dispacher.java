@@ -48,7 +48,9 @@ public class Dispacher {
                 response.setBody(authorResource.readTheme(authorId).toString());
             } else if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID_ISBNS)) {
                 response.setBody(authorResource.authorBookIsbnList(Integer.parseInt(request.paths()[1])).toString());
-
+            }else if (request.isEqualsPath(BookResource.BOOK)) {
+                //Pendiente de delegar al recurso
+                
             } else {
                 throw new RequestInvalidException(request.getPath());
             }
