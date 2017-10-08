@@ -9,7 +9,6 @@ import arquitectura.api.dtos.AuthorDto;
 import arquitectura.api.resources.exceptions.AuthorFieldInvalidException;
 import arquitectura.api.resources.exceptions.AuthorIdNotFoundException;
 
-
 public class AuthorResource {
 
     public static final String AUTHOR = "authors";
@@ -39,8 +38,9 @@ public class AuthorResource {
     }
 
     public AuthorBookListDto authorBookIsbnList(int authorId) throws AuthorIdNotFoundException, AuthorFieldInvalidException {
-        //Pendiente de delegar la comntrolador
-        return null;
+        
+        Optional<AuthorBookListDto> optional = new AuthorController().authorBooks(authorId);
+        return optional.orElseThrow(() -> new AuthorIdNotFoundException(Integer.toString(authorId)));
     }
 
 }

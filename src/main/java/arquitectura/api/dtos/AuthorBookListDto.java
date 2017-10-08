@@ -2,6 +2,8 @@ package arquitectura.api.dtos;
 
 import java.util.List;
 
+import arquitectura.api.entities.Author;
+
 public class AuthorBookListDto {
 
     private AuthorDto authorDto;
@@ -12,10 +14,9 @@ public class AuthorBookListDto {
         super();
 
     }
-    
-    public AuthorBookListDto(AuthorDto authorDto, List<Integer> isbnList) {
-        super();
-        this.authorDto = authorDto;
+      
+    public AuthorBookListDto(Author author, List<Integer> isbnList) {
+        this.authorDto = new AuthorDto(author);
         this.isbnList = isbnList;
     }
 
@@ -37,7 +38,8 @@ public class AuthorBookListDto {
 
     @Override
     public String toString() {
-        return "AuthorBookListDto [authorDto=" + authorDto + ", isbnList=" + isbnList + "]";
+ 
+        return "{" + authorDto + "," + isbnList + "}";
     }
         
 

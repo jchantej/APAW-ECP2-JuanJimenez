@@ -19,8 +19,8 @@ public class AuthorResourceFunctionalTesting {
 
     private String jsonEsperado = "[{\"id\":1,\"name\":\"Pablo Jimenez,\"language\":\"Español\"}, {\"id\":2,\"name\":\"Juan Jimenez,\"language\":\"Español\"}]";
     
-    private String jsonAurhorBooksIsbns = "{{\"id\":1,\"name\":\"Pablo Jimenez\"},[123, 124]}";
-
+    private String jsonAurhorBooksIsbns = "{{\"id\":1,\"name\":\"Pablo Jimenez,\"language\":\"Español\"},[123, 124]}";
+    
     @Before
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
@@ -95,7 +95,8 @@ public class AuthorResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
         request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID_ISBNS).expandPath("1")
                 .build();
-        assertEquals(jsonAurhorBooksIsbns, jsonAurhorBooksIsbns);
+        assertEquals(jsonAurhorBooksIsbns, new HttpClientService().httpRequest(request).getBody());
+        
         
   
     }
