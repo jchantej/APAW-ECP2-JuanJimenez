@@ -93,7 +93,7 @@ public class AuthorResourceFunctionalTesting {
         new HttpClientService().httpRequest(request);
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(BookResource.BOOK).body("1:124:Python").build();
         new HttpClientService().httpRequest(request);
-        request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID+"/isbns").expandPath("1")
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(AuthorResource.ID_ISBNS).expandPath("1")
                 .build();
         assertEquals(jsonAurhorBooksIsbns, jsonAurhorBooksIsbns);
         

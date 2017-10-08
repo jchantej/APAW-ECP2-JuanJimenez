@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import arquitectura.api.controllers.AuthorController;
+import arquitectura.api.dtos.AuthorBookListDto;
 import arquitectura.api.dtos.AuthorDto;
 import arquitectura.api.resources.exceptions.AuthorFieldInvalidException;
 import arquitectura.api.resources.exceptions.AuthorIdNotFoundException;
+
 
 public class AuthorResource {
 
     public static final String AUTHOR = "authors";
 
     public static final String ID = "/{id}";
+
+    public static final String ID_ISBNS = ID + "/isbns";
 
     public void createAuthor(String authorName) throws AuthorFieldInvalidException {
         this.validateField(authorName);
@@ -32,6 +36,11 @@ public class AuthorResource {
 
     public List<AuthorDto> authorList() {
         return new AuthorController().authorList();
+    }
+
+    public AuthorBookListDto authorBookIsbnList(int authorId) throws AuthorIdNotFoundException, AuthorFieldInvalidException {
+        //Pendiente de delegar la comntrolador
+        return null;
     }
 
 }

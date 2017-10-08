@@ -46,8 +46,8 @@ public class Dispacher {
             } else if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID)) {
                 int authorId = Integer.parseInt(request.paths()[1]);
                 response.setBody(authorResource.readTheme(authorId).toString());
-            } else if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID + "/isbns")) {
-                // TODO: Pendiente de delegar la recurso
+            } else if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID_ISBNS)) {
+                response.setBody(authorResource.authorBookIsbnList(Integer.parseInt(request.paths()[1])).toString());
 
             } else {
                 throw new RequestInvalidException(request.getPath());
