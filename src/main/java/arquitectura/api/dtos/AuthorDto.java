@@ -10,7 +10,7 @@ public class AuthorDto {
 
     private String authorLanguage;
 
-    public AuthorDto() {
+    public AuthorDto() {    
     }
 
     public AuthorDto(Author author) {
