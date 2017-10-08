@@ -1,7 +1,7 @@
 package arquitectura.api.resources;
 
+import java.util.List;
 import java.util.Optional;
-
 
 import arquitectura.api.controllers.AuthorController;
 import arquitectura.api.dtos.AuthorDto;
@@ -28,6 +28,10 @@ public class AuthorResource {
         if (field == null || field.isEmpty()) {
             throw new AuthorFieldInvalidException(field);
         }
+    }
+
+    public List<AuthorDto> authorList() {
+        return new AuthorController().authorList();
     }
 
 }

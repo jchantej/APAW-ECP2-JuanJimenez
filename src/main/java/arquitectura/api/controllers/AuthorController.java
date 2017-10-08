@@ -1,10 +1,12 @@
 package arquitectura.api.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import arquitectura.api.daos.DaoFactory;
 import arquitectura.api.dtos.AuthorDto;
 import arquitectura.api.entities.Author;
+
 
 public class AuthorController {
 
@@ -22,6 +24,15 @@ public class AuthorController {
 
     private boolean existAuthorId(int authorId) {
         return DaoFactory.getFactory().getAuthorDao().read(authorId) != null;
+    }
+
+    public List<AuthorDto> authorList() {
+        List<AuthorDto> authorDtoList = new ArrayList<>();
+        List<Author> authors = DaoFactory.getFactory().getAuthorDao().findAll();
+        for (Author author : authors) {
+            authorDtoList.add(new AuthorDto(author));
+        }
+        return authorDtoList;
     }
 
 }
