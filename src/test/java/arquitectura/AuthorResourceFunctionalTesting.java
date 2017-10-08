@@ -55,7 +55,14 @@ public class AuthorResourceFunctionalTesting {
     @Test(expected = HttpException.class)
     public void testAuthorIdNotFound() {
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
-                .expandPath("1").build();
+                .expandPath("2").build();
+        new HttpClientService().httpRequest(request);
+    }
+    
+    @Test(expected = HttpException.class)
+    public void testAuthorIdNotParserToInt() {
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.GET).path(AuthorResource.AUTHOR).path(Dispacher.ID)
+                .expandPath("P").build();
         new HttpClientService().httpRequest(request);
     }
 

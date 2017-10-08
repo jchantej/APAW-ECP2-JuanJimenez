@@ -1,6 +1,7 @@
 package arquitectura;
 
 import arquitectura.api.resources.AuthorResource;
+import arquitectura.api.resources.exceptions.AuthorIdNotFoundException;
 import arquitectura.api.resources.exceptions.RequestInvalidException;
 import arquitectura.http.HttpRequest;
 import arquitectura.http.HttpResponse;
@@ -10,8 +11,7 @@ import arquitectura.http.HttpStatus;
 public class Dispacher {
     
     private AuthorResource authorResource = new AuthorResource();
-    public static final String tempResponseBody = "{\"id\":1,\"name\":\"Pablo Jimenez\"}";
-    
+    public static final String tempResponseBody = "{\"id\":1,\"name\":\"Pablo Jimenez\"}";   
     public static final String ID = "/{id}";
    
     
@@ -38,7 +38,12 @@ public class Dispacher {
     public void doGet(HttpRequest request, HttpResponse response) {
         try {
             if (request.isEqualsPath(AuthorResource.AUTHOR + ID)) {
-                response.setBody(tempResponseBody);
+                int id= Integer.parseInt(request.paths()[1]);
+                if (1==id) {
+                    response.setBody(tempResponseBody); //Pendiene de delegar
+                }else
+                    throw new AuthorIdNotFoundException(request.getPath());
+               
             } else {
                 throw new RequestInvalidException(request.getPath());
             }
