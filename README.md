@@ -20,4 +20,8 @@ En proyecto tiene como finalidad montar una arquitectura Web- MVC - API
 [Mas info en Documentacion...](https://github.com/jchantej/APAW-ECP2-JuanJimenez/wiki/Documentaci%C3%B3n#introducci%C3%B3n)
 
 ***
+<<<<<<< HEAD
 ### Elaborado Por: Juan Pablo Jiménez Ramos
+=======
+### Elaborado Por: Juan Pablo Jiménez Ramos
+>>>>>>> refs/heads/release-1.0
