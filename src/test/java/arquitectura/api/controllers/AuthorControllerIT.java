@@ -1,5 +1,6 @@
 package arquitectura.api.controllers;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class AuthorControllerIT {
     }
 
     @Test
-    public void testCreatedTheme() {
+    public void testCreatedAuthor() {
         authorController.createAuthor("Pablo Jimenez");
     }
 
@@ -42,5 +43,15 @@ public class AuthorControllerIT {
         assertEquals("Juan Jimenez", authorController.authorList().get(1).getAuthorName());
         assertEquals("Español", authorController.authorList().get(1).getAuthorLanguage());
     }
+    
+    @Test
+    public void testAuthorBookList() {
+        authorController.createAuthor("Pablo Jimenez");
+        new BookController().createBook(1, 123, "Java");
+        new BookController().createBook(1, 124, "Python");
+        assertEquals("Pablo Jimenez", authorController.authorBooks(1).get().getAuthorDto().getAuthorName());
+        assertArrayEquals(new Integer[] {123, 124}, authorController.authorBooks(1).get().getIsbnList().toArray(new Integer[0]));
+    }
+
 
 }
