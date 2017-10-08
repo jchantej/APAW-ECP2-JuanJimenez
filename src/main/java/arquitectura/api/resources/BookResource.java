@@ -2,7 +2,6 @@ package arquitectura.api.resources;
 
 import java.util.List;
 
-
 import arquitectura.api.controllers.BookController;
 import arquitectura.api.dtos.BookDto;
 import arquitectura.api.resources.exceptions.AuthorIdNotFoundException;
@@ -18,20 +17,16 @@ public class BookResource {
             throws RequestInvalidException, AuthorIdNotFoundException, BookIdNotFoundException, BookFieldInvalidException {
 
         this.validateFields(authorId, titleBook);
-        
+
         if (!new BookController().createBook(authorId, isbnBook, titleBook)) {
             throw new AuthorIdNotFoundException(Integer.toString(authorId));
         }
-        
-    }
-    
-    public List<BookDto> bookList() {
-        
-        //pendiente Delegar Controlador
-        
-        return null;
+
     }
 
+    public List<BookDto> bookList() {
+        return new BookController().bookList();
+    }
 
     private void validateFields(int authorId, String titleBook) throws AuthorIdNotFoundException, BookFieldInvalidException {
         if (authorId < 1) {

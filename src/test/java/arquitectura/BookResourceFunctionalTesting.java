@@ -16,7 +16,7 @@ import arquitectura.http.HttpRequestBuilder;
 
 public class BookResourceFunctionalTesting {
     
-    private String jsonEsperado = "[{\"id\":1,\"isbn\":\"123,\"title\":\"Java\"}, {\"id\":2,\"isbn\":\"124,\"title\":\"Pyhton\"}]";
+    private String jsonEsperado = "[{\"id\":1,\"isbn\":\"123,\"title\":\"Java\"}, {\"id\":2,\"isbn\":\"124,\"title\":\"Python\"}]";
 
     @Before
     public void before() {
@@ -64,14 +64,17 @@ public class BookResourceFunctionalTesting {
     }
     
     @Test
-    public void testBookList() {
-        this.createAuthor();   
+    public void testBookList() { 
+        this.createAuthor();
         HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(BookResource.BOOK).body("1:123:Java").build();
         new HttpClientService().httpRequest(request);
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(BookResource.BOOK).body("1:124:Python").build();
         new HttpClientService().httpRequest(request);
+        
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(BookResource.BOOK).build();
 
-        assertEquals(jsonEsperado, jsonEsperado);
+        
+        assertEquals(jsonEsperado, new HttpClientService().httpRequest(request).getBody());
      
     }
 

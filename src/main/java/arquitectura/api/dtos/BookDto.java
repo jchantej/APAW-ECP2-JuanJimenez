@@ -82,7 +82,8 @@ public class BookDto {
 
     @Override
     public String toString() {
-        return "BookDto [bookId=" + bookId + ", bookIsbn=" + bookIsbn + ", bookTitle=" + bookTitle + ", bookDate=" + bookDate + "]";
+       // return "BookDto [bookId=" + bookId + ", bookIsbn=" + bookIsbn + ", bookTitle=" + bookTitle + "]";
+        return "{\"id\":" + bookId + ",\"isbn\":\"" + bookIsbn + ",\"title\":\"" + bookTitle + "\"}";
     }
 
 
