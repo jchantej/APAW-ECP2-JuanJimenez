@@ -29,8 +29,8 @@ public class BookResourceFunctionalTesting {
 
     
     private void createBook() {
-        this.createAuthor();
-        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path("books").body("1:123:Programacion").build();
+      //  this.createAuthor();
+        HttpRequest request = new HttpRequestBuilder().method(HttpMethod.POST).path(Dispacher.tempPath).body("1:123:Programacion").build();
         new HttpClientService().httpRequest(request);
     }
 

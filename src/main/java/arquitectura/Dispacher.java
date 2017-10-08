@@ -7,9 +7,13 @@ import arquitectura.http.HttpResponse;
 import arquitectura.http.HttpStatus;
 
 
+
 public class Dispacher {
     
+    
+    public  static final String tempPath="books";
     private AuthorResource authorResource = new AuthorResource();
+    
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
         response.setStatus(HttpStatus.BAD_REQUEST);
@@ -20,6 +24,16 @@ public class Dispacher {
             if (request.isEqualsPath(AuthorResource.AUTHOR)) {
                 authorResource.createAuthor(request.getBody());
                 response.setStatus(HttpStatus.CREATED);
+            } else if (request.isEqualsPath(tempPath)) {
+                
+                String bookId = request.getBody().split(":")[0]; // body="themeId:vote"
+                String isbnBook = request.getBody().split(":")[1];
+                String titleBook = request.getBody().split(":")[2];
+                
+                //TODO: Pendiente de delegar al recurso y capturar expeciones
+ 
+                response.setStatus(HttpStatus.CREATED);
+          
   
             } else {
                 throw new RequestInvalidException(request.getPath());
