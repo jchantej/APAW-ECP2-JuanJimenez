@@ -32,7 +32,7 @@ public class Dispacher {
     public void doGet(HttpRequest request, HttpResponse response) {
         try {
             if (request.isEqualsPath(AuthorResource.AUTHOR)) {
-                //TODO: Pendiente delegar recurso
+                response.setBody(authorResource.authorList().toString());
             }else if (request.isEqualsPath(AuthorResource.AUTHOR + AuthorResource.ID)) {
                 int authorId= Integer.parseInt(request.paths()[1]);
                 response.setBody(authorResource.readTheme(authorId).toString());
